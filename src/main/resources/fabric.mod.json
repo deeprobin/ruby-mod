@@ -16,19 +16,15 @@
   "license": "MIT",
   "icon": "assets/ruby_mod/icon.png",
   "environment": "*",
-  "accessWidener": "ruby_mod.accesswidener",
   "entrypoints": {
     "main": [
       "de.deeprobin.rubymod.RubyMod"
     ]
   },
-  "mixins": [
-    "ruby_mod.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.15.x"
+    "minecraft": "*"
   },
   "suggests": {
     "flamingo": "*"

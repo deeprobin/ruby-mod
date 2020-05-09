@@ -1,6 +1,7 @@
 package de.deeprobin.rubymod;
 
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 
 class RubyMaterial implements ToolMaterial {
@@ -10,7 +11,7 @@ class RubyMaterial implements ToolMaterial {
     }
 
     @Override
-    public float getMiningSpeed() {
+    public float getMiningSpeedMultiplier() {
         return 10.0F;
     }
 

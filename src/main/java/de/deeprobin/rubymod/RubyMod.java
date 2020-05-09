@@ -28,7 +28,7 @@ public class RubyMod implements ModInitializer {
 	public static final Item RUBY_PICKAXE = new RubyPickaxe(TOOL_MATERIAL, 2, -2.2F, (new Item.Settings()).group(ItemGroup.TOOLS));
 	public static final Item RUBY_AXE = new RubyAxe(TOOL_MATERIAL, 6.0F, -2.8F, (new Item.Settings()).group(ItemGroup.TOOLS));
 	public static final Item RUBY_SHOVEL = new ShovelItem(TOOL_MATERIAL, 2.5F, -2.8F, (new Item.Settings()).group(ItemGroup.TOOLS));
-	public static final Item RUBY_HOE = new HoeItem(TOOL_MATERIAL, 0.0F, (new Item.Settings()).group(ItemGroup.TOOLS));
+	public static final Item RUBY_HOE = new RubyHoe(TOOL_MATERIAL, 0, -2.8F, (new Item.Settings()).group(ItemGroup.TOOLS));
 
 	public static final Item RUBY_HELMET = new ArmorItem(ARMOR_MATERIAL, EquipmentSlot.HEAD, (new Item.Settings().group(ItemGroup.COMBAT)));
 	public static final Item RUBY_CHESTPLATE = new ArmorItem(ARMOR_MATERIAL, EquipmentSlot.CHEST, (new Item.Settings().group(ItemGroup.COMBAT)));

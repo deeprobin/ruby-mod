@@ -25,10 +25,6 @@ dependencies {
     include "com.extracraftx.minecraft:ProgrammerArtInjector:1.2.0"
 }
 
-minecraft {
-	accessWidener = file("src/main/resources/ruby_mod.accesswidener")
-}
-
 processResources {
 	inputs.property "version", project.version
 
