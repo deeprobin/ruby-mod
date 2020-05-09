@@ -11,11 +11,11 @@ public class BeaconInventory extends BasicInventory {
         super(1);
     }
 
-        public boolean isValidInvStack(int slot, ItemStack stack) {
-            return stack.getItem() == RubyMod.RUBY || stack.getItem() == Items.EMERALD || stack.getItem() == Items.DIAMOND || stack.getItem() == Items.GOLD_INGOT || stack.getItem() == Items.IRON_INGOT;
-        }
+    public boolean isValidInvStack(int slot, ItemStack stack) {
+        return stack.getItem() == RubyMod.RUBY || stack.getItem() == Items.EMERALD || stack.getItem() == Items.DIAMOND || stack.getItem() == Items.GOLD_INGOT || stack.getItem() == Items.IRON_INGOT;
+    }
 
-        public int getInvMaxStackAmount() {
+    public int getInvMaxStackAmount() {
             return 1;
         }
 
