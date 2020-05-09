@@ -1,0 +1,15 @@
+{
+  "item.ruby_mod.ruby": "Ruby",
+  "item.ruby_mod.ruby_sword": "Ruby Sword",
+  "item.ruby_mod.ruby_axe": "Ruby Axe",
+  "item.ruby_mod.ruby_shovel": "Ruby Shovel",
+  "item.ruby_mod.ruby_pickaxe": "Ruby Pickaxe",
+  "item.ruby_mod.ruby_hoe": "Ruby Hoe",
+  "item.ruby_mod.ruby_helmet": "Ruby Helmet",
+  "item.ruby_mod.ruby_chestplate": "Ruby Chestplate",
+  "item.ruby_mod.ruby_leggings": "Ruby Leggings",
+  "item.ruby_mod.ruby_boots": "Ruby Boots",
+  "item.ruby_mod.ruby_horse_armor": "Ruby Horse Armor",
+  "block.ruby_mod.ruby_block": "Ruby Block",
+  "block.ruby_mod.ruby_ore": "Ruby Ore"
+}

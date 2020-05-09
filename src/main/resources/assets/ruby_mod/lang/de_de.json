@@ -1,0 +1,15 @@
+{
+  "item.ruby_mod.ruby": "Rubin",
+  "item.ruby_mod.ruby_sword": "Rubinschwert",
+  "item.ruby_mod.ruby_axe": "Rubinaxt",
+  "item.ruby_mod.ruby_shovel": "Rubinschaufel",
+  "item.ruby_mod.ruby_pickaxe": "Rubinspitzhacke",
+  "item.ruby_mod.ruby_hoe": "Rubinhacke",
+  "item.ruby_mod.ruby_helmet": "Rubinhelm",
+  "item.ruby_mod.ruby_chestplate": "Rubinbrustpanzer",
+  "item.ruby_mod.ruby_leggings": "Rubinhose",
+  "item.ruby_mod.ruby_boots": "Rubinstiefel",
+  "item.ruby_mod.ruby_horse_armor": "Rubin-Pferderüstung",
+  "block.ruby_mod.ruby_block": "Rubinblock",
+  "block.ruby_mod.ruby_ore": "Rubinerz"
+}

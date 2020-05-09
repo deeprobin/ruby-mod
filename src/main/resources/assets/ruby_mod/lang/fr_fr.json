@@ -1,0 +1,15 @@
+{
+  "item.ruby_mod.ruby" : "Ruby",
+  "item.ruby_mod.ruby_sword" : "Epée de rubis",
+  "item.ruby_mod.ruby_axe" : "Ruby axe"
+  "item.ruby_mod.ruby_shovel" : "Pelle à rubis",
+  "item.ruby_mod.ruby_pickaxe" : "Pioche en rubis"
+  "item.ruby_mod.ruby_hoe" : "Pioche en rubis",
+  "item.ruby_mod.ruby_helmet" : "Casque de rubis",
+  "item.ruby_mod.ruby_chestplate" : "Armure à poitrine de rubis"
+  "item.ruby_mod.ruby_leggings" : "Pantalon en rubis",
+  "item.ruby_mod.ruby_boots" : "Bottes en rubis",
+  "item.ruby_mod.ruby_horse_armor" : "Armure de cheval en rubis."
+  "block.ruby_mod.ruby_block" : "Bloc de rubis",
+  "block.ruby_mod.ruby_ore" : "Le minerai de rubis"
+}

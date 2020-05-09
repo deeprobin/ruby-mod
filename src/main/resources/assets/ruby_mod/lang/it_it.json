@@ -1,0 +1,15 @@
+{
+  "item.ruby_mod.ruby": "Rubino",
+  "item.ruby_mod.ruby_sword": "Spada Rubino",
+  "item.ruby_mod.ruby_axe": "Ascia Rubino",
+  "item.ruby_mod.ruby_shovel": "Pala Rubino",
+  "item.ruby_mod.ruby_pickaxe": "Piccone Rubino",
+  "item.ruby_mod.ruby_hoe": "Zappa Rubino",
+  "item.ruby_mod.ruby_helmet": "Casco Rubino",
+  "item.ruby_mod.ruby_chestplate": "Pettorale di rubino",
+  "item.ruby_mod.ruby_leggings": "Leggings rubino",
+  "item.ruby_mod.ruby_boots": "Stivali Rubino",
+  "item.ruby_mod.ruby_horse_armor": "Armatura a cavallo rubinor",
+  "block.ruby_mod.ruby_block": "Blocco di rubini",
+  "block.ruby_mod.ruby_ore": "Minerale di rubino"
+}
