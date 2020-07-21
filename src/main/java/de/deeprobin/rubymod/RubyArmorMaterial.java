@@ -8,13 +8,13 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
-class RubyArmorMaterial implements ArmorMaterial {
+final class RubyArmorMaterial implements ArmorMaterial {
 
     private static final int[] BASE_DURABILITY = new int[]{13, 15, 16, 11};
-    private static final int[] PROTECTION_AMOUNT = new int[]{2,4,3,2};
+    private static final int[] PROTECTION_AMOUNT = new int[]{3, 6, 8, 3};
 
     public int getDurability(EquipmentSlot slot) {
-        return BASE_DURABILITY[slot.getEntitySlotId()] * 40;
+        return BASE_DURABILITY[slot.getEntitySlotId()] * 35;
     }
 
     public int getProtectionAmount(EquipmentSlot slot) {
@@ -39,7 +39,7 @@ class RubyArmorMaterial implements ArmorMaterial {
     }
 
     public float getToughness() {
-        return 0.0F;
+        return 2.5F;
     }
 
     @Override

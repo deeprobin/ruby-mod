@@ -4,7 +4,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 
-class RubyMaterial implements ToolMaterial {
+final class RubyMaterial implements ToolMaterial {
     @Override
     public int getDurability() {
         return 2048;

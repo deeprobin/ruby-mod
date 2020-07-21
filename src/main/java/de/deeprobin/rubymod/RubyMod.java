@@ -20,7 +20,7 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
  * @author Robin Lindner
  * @see net.fabricmc.api.ModInitializer
  */
-public class RubyMod implements ModInitializer {
+public final class RubyMod implements ModInitializer {
 
 	public static final ToolMaterial TOOL_MATERIAL = new RubyMaterial();
 	public static final ArmorMaterial ARMOR_MATERIAL = new RubyArmorMaterial();
@@ -59,11 +59,11 @@ public class RubyMod implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("ruby_mod", "ruby_block"), new BlockItem(RUBY_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		Registry.register(Registry.ITEM, new Identifier("ruby_mod", "ruby_ore"), new BlockItem(RUBY_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
-		Registry.BIOME.forEach(this::handleBiome);
-		RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> handleBiome(biome));
+		Registry.BIOME.forEach(this::handleOreGeneration);
+		RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, b) -> handleOreGeneration(b));
 	}
 
-	private void handleBiome(Biome biome) {
+	private void handleOreGeneration(Biome biome) {
 		if(biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND) {
 			int veinCount;
 			if (biome.getCategory() == Biome.Category.MUSHROOM) {
