@@ -1,14 +1,9 @@
 name: Create draft release on version-tag (v*) created
 
 on:
-  push:
-    paths-ignore:
-    - docs/**
-    - README.md
-    branches:
-    - master
+  create:
     tags:
-    - v*
+      - v*
 
 jobs:
   create_release:
