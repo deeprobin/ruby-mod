@@ -1,4 +1,4 @@
-package de.deeprobin.rubymod;
+package de.deeprobin.ruby_mod;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

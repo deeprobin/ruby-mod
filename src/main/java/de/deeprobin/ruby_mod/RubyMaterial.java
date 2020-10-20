@@ -1,7 +1,6 @@
-package de.deeprobin.rubymod;
+package de.deeprobin.ruby_mod;
 
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 
 final class RubyMaterial implements ToolMaterial {

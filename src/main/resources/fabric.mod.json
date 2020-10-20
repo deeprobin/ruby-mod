@@ -18,12 +18,15 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "de.deeprobin.rubymod.RubyMod"
+      "de.deeprobin.ruby_mod.RubyMod"
     ]
   },
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
     "minecraft": "*"
-  }
+  },
+  "mixins": [
+    "ruby_mod.mixins.json"
+  ]
 }

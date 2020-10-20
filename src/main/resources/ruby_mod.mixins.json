@@ -1,0 +1,8 @@
+{
+  "package": "de.deeprobin.ruby_mod.mixin",
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "DefaultBiomeFeaturesMixin"
+  ]
+}

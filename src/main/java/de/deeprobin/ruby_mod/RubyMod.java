@@ -1,17 +1,16 @@
-package de.deeprobin.rubymod;
+package de.deeprobin.ruby_mod;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 
@@ -41,6 +40,16 @@ public final class RubyMod implements ModInitializer {
 	public static final Block RUBY_BLOCK = new Block(Block.Settings.of(Material.METAL, MaterialColor.RED).strength(5.0F, 6.0F));
 	public static final Block RUBY_ORE = new OreBlock(Block.Settings.of(Material.STONE).strength(3.0F, 3.0F));
 
+	public static ConfiguredFeature<?, ?> RUBY_ORE_OVERWORLD = Feature.ORE.configure(
+			new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, RUBY_ORE.getDefaultState(), 8)
+	).decorate(Decorator.RANGE.configure(
+			new RangeDecoratorConfig(
+					0,
+					0,
+					16
+			)
+	)).spreadHorizontally();
+
 	@Override
 	public void onInitialize() {
 		Registry.register(Registry.ITEM, new Identifier("ruby_mod", "ruby"), RUBY);
@@ -59,33 +68,6 @@ public final class RubyMod implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("ruby_mod", "ruby_block"), new BlockItem(RUBY_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		Registry.register(Registry.ITEM, new Identifier("ruby_mod", "ruby_ore"), new BlockItem(RUBY_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
-		Registry.BIOME.forEach(this::handleOreGeneration);
-		RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, b) -> handleOreGeneration(b));
-	}
-
-	private void handleOreGeneration(Biome biome) {
-		if(biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND) {
-			int veinCount;
-			if (biome.getCategory() == Biome.Category.MUSHROOM) {
-				veinCount = 8;
-			} else {
-				veinCount = 1;
-			}
-
-			biome.addFeature(
-					GenerationStep.Feature.UNDERGROUND_ORES,
-					Feature.ORE.configure(
-							new OreFeatureConfig(
-									OreFeatureConfig.Target.NATURAL_STONE,
-									RUBY_ORE.getDefaultState(),
-									1 // ore vein size
-							)).createDecoratedFeature(
-							Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(
-									veinCount, // veins per chunk
-									0,
-									3, // min y level
-									16 // max y level
-							))));
-		}
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("ruby_mod", "ore_ruby_overworld"), RUBY_ORE_OVERWORLD);
 	}
 }

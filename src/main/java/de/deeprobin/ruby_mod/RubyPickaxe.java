@@ -1,4 +1,4 @@
-package de.deeprobin.rubymod;
+package de.deeprobin.ruby_mod;
 
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
