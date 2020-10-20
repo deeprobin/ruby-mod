@@ -1,19 +1,12 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
-name: Java CI with Gradle
-
+name: Release and upload mod files
 on:
-  push:
+  release:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    types: [created]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -24,3 +17,8 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Upload mod assets
+      uses: AButler/upload-release-assets@ec6d3263266dc57eb6645b5f75e827987f7c217d
+      with:
+        files: build/libs/ruby-mod-*.jar
+        repo-token: ${{ secrets.GITHUB_TOKEN }}

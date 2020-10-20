@@ -1,0 +1,29 @@
+name: Create draft release on version-tag (v*) created
+
+on:
+  push:
+    paths-ignore:
+    - docs/**
+    - README.md
+    branches:
+    - master
+    tags:
+    - v*
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create Draft Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        draft: true
+        prerelease: false
+        body: |
+          # Release title
+          *This draft release was automatically created*
