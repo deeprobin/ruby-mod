@@ -17,8 +17,8 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-    - uses: AButler/upload-release-assets@ec6d3263266dc57eb6645b5f75e827987f7c217d
     - name: Upload mod assets
+      uses: AButler/upload-release-assets@ec6d3263266dc57eb6645b5f75e827987f7c217d
       with:
         files: build/libs/ruby-mod-*.jar
         repo-token: ${{ secrets.GITHUB_TOKEN }}
