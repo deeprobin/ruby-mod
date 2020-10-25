@@ -52,16 +52,7 @@ jobs:
         result-encoding: string
         script: |
           const fs = require("fs")
-          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("sources.jar"))[0].replace(".jar", "");
-
-    - uses: 'actions/github-script@v2'
-      id: 'find_sources_dev_jar'
-      with:
-        result-encoding: string
-        script: |
-          const fs = require("fs")
-          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("sources-dev.jar"))[0].replace(".jar", "");
-      
+          
     - name: 'Upload mod asset to release'
       uses: 'actions/upload-release-asset@v1.0.2'
       with:
@@ -88,16 +79,6 @@ jobs:
         upload_url: '${{ github.event.release.upload_url }}'
         asset_path: './build/libs/${{ steps.find_mod_dev_jar.outputs.result }}.jar'
         asset_name: '${{ steps.find_mod_dev_jar.outputs.result }}'
-        asset_content_type: 'application/java-archive'
-      env:
-        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-        
-    - name: 'Upload mod dev sources asset to release'
-      uses: 'actions/upload-release-asset@v1.0.2'
-      with:
-        upload_url: '${{ github.event.release.upload_url }}'
-        asset_path: './build/libs/${{ steps.find_sources_dev_jar.outputs.result }}.jar'
-        asset_name: '${{ steps.find_sources_dev_jar.outputs.result }}'
         asset_content_type: 'application/java-archive'
       env:
         GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
