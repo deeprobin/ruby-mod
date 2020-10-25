@@ -41,7 +41,7 @@ jobs:
     - name: Upload to curseforge
       uses: itsmeow/curseforge-upload@v2
       with:
-        token: ${{ secrets.CURSEFORGE_KEY }}
+        token: ${{ secrets.CURSEFORGE_TOKEN }}
         project_id: 403185
         game_endpoint: minecraft
         file_path: ./build/libs/${{ steps.fname.outputs.result }}.jar
