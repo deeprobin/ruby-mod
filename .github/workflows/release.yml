@@ -44,7 +44,7 @@ jobs:
         result-encoding: 'string'
         script: |
           const fs = require("fs")
-          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("dev.jar")).replace(".jar", "");
+          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("dev.jar"))[0].replace(".jar", "");
           
     - uses: 'actions/github-script@v2'
       id: 'find_sources_dev_jar'
@@ -52,7 +52,7 @@ jobs:
         result-encoding: string
         script: |
           const fs = require("fs")
-          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("sources.jar")).replace(".jar", "");
+          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("sources.jar"))[0].replace(".jar", "");
       
     - name: 'Upload mod asset to release'
       uses: 'actions/upload-release-asset@v1.0.2'
