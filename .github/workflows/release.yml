@@ -1,62 +1,103 @@
-name: Release and upload mod files
+name: 'Release and upload mod files'
 
 on:
-  release: 
+  release:
 
 jobs:
   build-master:
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-latest'
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: 'actions/checkout@v2'
       with:
-        ref: master
+        ref: 'master'
       
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
+    - name: 'Set up JDK 1.8'
+      uses: 'actions/setup-java@v1'
       with:
         java-version: 1.8
         
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
-    - name: Read minecraft version
-      uses: christian-draeger/read-properties@1.0.1
-      id: read_minecraft_version
+    - name: 'Grant execute permission for gradlew'
+      run: 'chmod +x gradlew'
+      
+    - name: 'Build with Gradle'
+      run: './gradlew build'
+      
+    - name: 'Read minecraft version'
+      uses: 'christian-draeger/read-properties@1.0.1'
+      id: 'read_minecraft_version'
       with:
         path: 'gradle.properties'
         property: 'minecraft_version'
-    - uses: actions/github-script@v2
-      id: fname
+      
+    - uses: 'actions/github-script@v2'
+      id: 'find_mod_jar'
+      with:
+        result-encoding: 'string'
+        script: |
+          const fs = require("fs")
+          return fs.readdirSync("./build/libs/").filter(e => !e.endsWith("dev.jar") && !e.endsWith("sources.jar") && e.endsWith(".jar"))[0].replace(".jar", "");
+          
+    - uses: 'actions/github-script@v2'
+      id: 'find_mod_dev_jar'
+      with:
+        result-encoding: 'string'
+        script: |
+          const fs = require("fs")
+          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("dev.jar")).replace(".jar", "");
+          
+    - uses: 'actions/github-script@v2'
+      id: 'find_sources_dev_jar'
       with:
         result-encoding: string
         script: |
           const fs = require("fs")
-          return fs.readdirSync("./build/libs/").filter(e => !e.endsWith("dev.jar") && !e.endsWith("sources.jar") && e.endsWith(".jar"))[0].replace(".jar", "");
+          return fs.readdirSync("./build/libs/").filter(e => e.endsWith("sources.jar")).replace(".jar", "");
       
-    - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
+    - name: 'Upload mod asset to release'
+      uses: 'actions/upload-release-asset@v1.0.2'
       with:
-        args: ./build/libs/${{ steps.fname.outputs.result }}.jar
+        upload_url: '${{ github.event.release.upload_url }}'
+        asset_path: '${{ steps.find_mod_jar.outputs.result }}.jar'
+        asset_content_type: 'application/java-archive'
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload to curseforge
-      uses: itsmeow/curseforge-upload@v2
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        
+    - name: 'Upload mod dev asset to release'
+      uses: 'actions/upload-release-asset@v1.0.2'
       with:
-        token: ${{ secrets.CURSEFORGE_TOKEN }}
+        upload_url: '${{ github.event.release.upload_url }}'
+        asset_path: '${{ steps.find_mod_dev_jar.outputs.result }}.jar'
+        asset_content_type: 'application/java-archive'
+      env:
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        
+    - name: 'Upload mod sources asset to release'
+      uses: 'actions/upload-release-asset@v1.0.2'
+      with:
+        upload_url: '${{ github.event.release.upload_url }}'
+        asset_path: '${{ steps.find_mod_sources_jar.outputs.result }}.jar'
+        asset_content_type: 'application/java-archive'
+      env:
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        
+    - name: 'Upload to curseforge'
+      uses: 'itsmeow/curseforge-upload@v2'
+      with:
+        token: '${{ secrets.CURSEFORGE_TOKEN }}'
         project_id: 403185
-        game_endpoint: minecraft
-        file_path: ./build/libs/${{ steps.fname.outputs.result }}.jar
-        changelog: See the github release for changes.
-        display_name: ${{ steps.fname.outputs.result }}
+        game_endpoint: 'minecraft'
+        file_path: './build/libs/${{ steps.find_mod_jar.outputs.result }}.jar'
+        changelog: 'See the github release for changes'
+        display_name: '${{ steps.find_mod_jar.outputs.result }}'
         # 70886 is the minecraft version field
         # 2 is the Java Version field
         # 68441 is the Mod loader field
-        game_versions: 70886:${{ steps.read_minecraft_version.outputs.value }},2:Java 8,68441:Fabric
-        release_type: release
-        relations: modmenu:optionalDependency
-    - uses: actions/upload-artifact@v2
+        game_versions: '70886:${{ steps.read_minecraft_version.outputs.value }},2:Java 8,68441:Fabric'
+        release_type: 'release'
+        relations: 'modmenu:optionalDependency'
+        
+    - uses: 'actions/upload-artifact@v2'
       with:
-        name: ${{ steps.fname.outputs.result }}
-        path: ./build/libs/*
+        name: '${{ steps.find_mod_jar.outputs.result }}'
+        path: './build/libs/*'
