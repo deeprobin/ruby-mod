@@ -66,7 +66,7 @@ jobs:
       uses: 'actions/upload-release-asset@v1.0.2'
       with:
         upload_url: '${{ github.event.release.upload_url }}'
-        asset_path: '${{ steps.find_mod_jar.outputs.result }}.jar'
+        asset_path: './build/libs/${{ steps.find_mod_jar.outputs.result }}.jar'
         asset_name: '${{ steps.find_mod_jar.outputs.result }}'
         asset_content_type: 'application/java-archive'
       env:
@@ -76,7 +76,7 @@ jobs:
       uses: 'actions/upload-release-asset@v1.0.2'
       with:
         upload_url: '${{ github.event.release.upload_url }}'
-        asset_path: '${{ steps.find_mod_sources_jar.outputs.result }}.jar'
+        asset_path: './build/libs/${{ steps.find_mod_sources_jar.outputs.result }}.jar'
         asset_name: '${{ steps.find_mod_sources_jar.outputs.result }}'
         asset_content_type: 'application/java-archive'
       env:
@@ -86,7 +86,7 @@ jobs:
       uses: 'actions/upload-release-asset@v1.0.2'
       with:
         upload_url: '${{ github.event.release.upload_url }}'
-        asset_path: '${{ steps.find_mod_dev_jar.outputs.result }}.jar'
+        asset_path: './build/libs/${{ steps.find_mod_dev_jar.outputs.result }}.jar'
         asset_name: '${{ steps.find_mod_dev_jar.outputs.result }}'
         asset_content_type: 'application/java-archive'
       env:
@@ -96,7 +96,7 @@ jobs:
       uses: 'actions/upload-release-asset@v1.0.2'
       with:
         upload_url: '${{ github.event.release.upload_url }}'
-        asset_path: '${{ steps.find_sources_dev_jar.outputs.result }}.jar'
+        asset_path: './build/libs/${{ steps.find_sources_dev_jar.outputs.result }}.jar'
         asset_name: '${{ steps.find_sources_dev_jar.outputs.result }}'
         asset_content_type: 'application/java-archive'
       env:
