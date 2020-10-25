@@ -2,7 +2,7 @@ name: Release and upload mod files
 
 on:
   release: 
-    types: [created]
+    types: [published]
 
 jobs:
   build-master:
