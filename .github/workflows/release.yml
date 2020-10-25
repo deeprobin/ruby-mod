@@ -1,7 +1,6 @@
 name: Release and upload mod files
 on:
   release:
-    branches: [ master ]
     types: [created]
 
 jobs:
